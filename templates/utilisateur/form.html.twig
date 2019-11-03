@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création du Compte Client{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        {{ form_start(clientForm) }}
+
+        <div class="offset-1 col-sm-10">
+            <h1 style="text-align: center;margin-top: 2%">
+                <span class="oi oi-person"></span>
+                Création du compte
+            </h1>
+
+            {{ form_widget(clientForm) }}
+            <button type="submit" class="btn btn-lg btn-primary" style="float:right">Créer</button>
+        </div>
+
+
+        {{ form_end(clientForm) }}
+
+    </div>
+
+
+
+{% endblock %}

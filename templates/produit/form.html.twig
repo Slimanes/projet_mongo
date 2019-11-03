@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création du Produit{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        {{ form_start(produitForm) }}
+
+        <div class="offset-1 col-sm-10">
+            <h1 style="text-align: center;margin-top: 2%">
+                <span class="oi oi-person"></span>
+                Création du Produit
+            </h1>
+
+            {{ form_widget(produitForm) }}
+            <button type="submit" class="btn btn-lg btn-primary" style="float:right">Créer</button>
+        </div>
+
+
+        {{ form_end(produitForm) }}
+
+    </div>
+
+
+
+{% endblock %}

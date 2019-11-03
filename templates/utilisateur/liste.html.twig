@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Comptes{% endblock %}
+
+    {% block body %}
+        <h1 style="text-align: center;margin-top: 2%">
+            <span class="oi oi-list"></span>
+            Liste des comptes
+        </h1>
+
+        <div class="container">
+
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+
+                    <tr>
+                        <th width="20%" height="20%">Id</th>
+                        <th width="20%" height="20%">Prenom</th>
+                        <th width="20%" height="20%">Nom</th>
+                        <th width="20%" height="20%">email</th>
+                        <th width="20%" height="20%">date</th>
+                        <th width="20%" height="20%">Actions</th>
+                        {#{% if is_granted('ROLE_ADMIN') %}#}
+                        <th colspan="2">
+                            <a href="{{ path('app_utilisateur_create') }}" class="btn btn-success">
+                                <span class="oi oi-plus"></span>
+                                Créer
+                            </a>
+                        </th>
+                        {#{% endif %}#}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set token = csrf_token('MARQUE_DELETE') %}
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.firstname }}</td>
+                            <td>{{ user.lastname }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.creationDate|date('Y-m-d') }}</td>
+                            {#{% if is_granted('ROLE_ADMIN') %}#}
+                            <td><a href="{{ path('app_utilisateur_update',{id:user.id}) }}" class="btn btn-warning">
+                                    <span class=" oi oi-pencil"></span>
+                                    Modifier
+                                </a>
+                            </td>
+                            <td><a href="{{ path('app_utilisateur_delete',{id:user.id,token:token}) }}"
+                                   class="btn btn-danger">
+                                    <span class="oi oi-trash"></span>
+                                    Supprimer
+                                </a>
+                            </td>
+                            {#{% endif %}#}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    {% endblock %}
+

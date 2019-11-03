@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+    {% block body %}
+        <h1 style="text-align: center;margin-top: 2%">
+            <span class="oi oi-list"></span>
+            Liste des produits
+        </h1>
+
+        <div class="container">
+
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+
+                    <tr>
+                        <th width="20%" height="20%">N°Série</th>
+                        <th width="20%" height="20%">Nom</th>
+                        <th width="20%" height="20%">Matière</th>
+                        <th width="20%" height="20%">Couleur</th>
+                        <th width="20%" height="20%">Taille</th>
+                        <th width="20%" height="20%">Marque</th>
+                        <th width="20%" height="20%">Prix</th>
+                        {#{% if is_granted('ROLE_ADMIN') %}#}
+                        <th colspan="2">
+                            <a href="{{ path('app_produit_create') }}" class="btn btn-success">
+                                <span class="oi oi-plus"></span>
+                                Créer
+                            </a>
+                        </th>
+                        {#{% endif %}#}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {#{% set token = csrf_token('MARQUE_DELETE') %}#}
+                    {% for produit in produits%}
+                        <tr>
+                            <td>{{ produit.numeroSerie }}</td>
+                            <td>{{ produit.nom}}</td>
+                            <td>{{ produit.matiere }}</td>
+                            <td>{{ produit.couleur }}</td>
+                            <td>{{ produit.taille }}</td>
+                            <td>{{ produit.marque }}</td>
+                            <td>{{ produit.prix }}</td>
+                            {#{% if is_granted('ROLE_ADMIN') %}#}
+                            <td><a href="{{ path('app_produit_update',{id:produit.id}) }}" class="btn btn-warning">
+                                    <span class=" oi oi-pencil"></span>
+                                    Modifier
+                                </a>
+                            </td>
+                            <td><a href="{{ path('app_produit_delete',{id:produit.id}) }}"
+                                   class="btn btn-danger">
+                                    <span class="oi oi-trash"></span>
+                                    Supprimer
+                                </a>
+                            </td>
+                            {#{% endif %}#}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    {% endblock %}
+
