@@ -28,7 +28,8 @@ doctrine_mongodb:
     connections:
         default:
             server: "%mongodb_server%"
-            options: {}
+            options:
+#                replicaSet: rs0
     default_database: symfony
     document_managers:
         default:

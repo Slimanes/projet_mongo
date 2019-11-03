@@ -1,2 +1,2 @@
 parameters:
-    mongodb_server: "mongodb://localhost:27017"
+     mongodb_server: "localhost://localhost:27018,localhost:27019,localhost:27020"
